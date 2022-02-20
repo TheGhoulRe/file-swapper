@@ -16,4 +16,11 @@ fn main() {
         content1 = fs::read_to_string(file1).unwrap();
         return content1;
     });
+
+    let handle2 = thread::spawn(move || {
+        println!("Reading file 1");
+        content2 = fs::read_to_string(file2).unwrap();
+        return content2;
+    });
+
 }
