@@ -37,4 +37,10 @@ fn main() {
         fs::write(new_file1, content1).expect("cannot write file");
         println!("File 1 written");
     });
+
+    thread::spawn(move || {
+        println!("Writing to new file 1");
+        fs::write(new_file2, content2).expect("cannot write file");
+        println!("File 1 written");
+    });
 }
