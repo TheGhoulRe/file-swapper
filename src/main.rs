@@ -10,6 +10,8 @@ fn main() {
 
     let file1: String = args[1].to_string();
     let file2: String = args[2].to_string();
+    let newFile2 = file1.clone();
+    let newFile1 = file2.clone();
 
     thread::spawn(move || {
         println!("Reading file 1");
@@ -29,5 +31,4 @@ fn main() {
         contents[received.1 as usize] = received.0;
     }
     let [content1, content2] = contents;
-
 }
