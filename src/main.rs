@@ -31,4 +31,10 @@ fn main() {
         contents[received.1 as usize] = received.0;
     }
     let [content1, content2] = contents;
+
+    thread::spawn(move || {
+        println!("Writing to new file 1");
+        fs::write(new_file1, content1).expect("cannot write file");
+        println!("File 1 written");
+    });
 }
