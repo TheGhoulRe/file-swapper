@@ -10,8 +10,8 @@ fn main() {
 
     let file1: String = args[1].to_string();
     let file2: String = args[2].to_string();
-    let newFile2 = file1.clone();
-    let newFile1 = file2.clone();
+    let new_file2 = file1.clone();
+    let new_file1 = file2.clone();
 
     thread::spawn(move || {
         println!("Reading file 1");
