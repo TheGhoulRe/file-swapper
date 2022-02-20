@@ -10,12 +10,12 @@ fn main() {
     let file1: String = args[1].to_string();
     let file2: String = args[2].to_string();
 
-    let handle1 = thread::spawn(move || {
+    thread::spawn(move || {
         println!("Reading file 1");
         let content = fs::read_to_string(file1).unwrap();
     });
 
-    let handle2 = thread::spawn(move || {
+    thread::spawn(move || {
         println!("Reading file 1");
         let content = fs::read_to_string(file2).unwrap();
     });
