@@ -32,15 +32,18 @@ fn main() {
     }
     let [content1, content2] = contents;
 
-    thread::spawn(move || {
+    let handler1 = thread::spawn(move || {
         println!("Writing to new file 1");
         fs::write(new_file1, content1).expect("cannot write file");
         println!("File 1 written");
     });
 
-    thread::spawn(move || {
+    let handler2 = thread::spawn(move || {
         println!("Writing to new file 1");
         fs::write(new_file2, content2).expect("cannot write file");
         println!("File 1 written");
     });
+
+    handler1.join().expect("handler 1 had an error");
+    handler2.join().expect("handler 2 had an error");
 }
