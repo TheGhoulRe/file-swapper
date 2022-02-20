@@ -22,4 +22,12 @@ fn main() {
         let content = fs::read_to_string(file2).unwrap();
         tx1.send((content, 2)).unwrap();
     });
+
+    let mut contents: [String;2] = ["".to_string(), "".to_string()];
+
+    for received in rx {
+        contents[received.1 as usize] = received.0;
+    }
+    let [content1, content2] = contents;
+
 }
