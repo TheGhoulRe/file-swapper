@@ -8,4 +8,8 @@ fn main() {
 
     let file1 = cmd_line.next();
     let file2 = cmd_line.next();
+
+    let mut content1 = String::new();
+    let mut content2 = String::new();
+
 }
