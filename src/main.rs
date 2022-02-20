@@ -6,6 +6,7 @@ use std::sync::mpsc;
 fn main() {
     let args: Vec<String> = env::args().collect();
     let (tx, rx): (mpsc::Sender<(String, i8)>, mpsc::Receiver<(String, i8)>) = mpsc::channel();
+    let tx1 = tx.clone();
 
     let file1: String = args[1].to_string();
     let file2: String = args[2].to_string();
@@ -13,11 +14,12 @@ fn main() {
     thread::spawn(move || {
         println!("Reading file 1");
         let content = fs::read_to_string(file1).unwrap();
+        tx.send((content, 1)).unwrap();
     });
-
+    
     thread::spawn(move || {
-        println!("Reading file 1");
+        println!("Reading file 2");
         let content = fs::read_to_string(file2).unwrap();
+        tx1.send((content, 2)).unwrap();
     });
-
 }
